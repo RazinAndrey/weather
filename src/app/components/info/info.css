@@ -1,0 +1,40 @@
+:host {
+  width: 100%;
+  padding: 1rem;
+}
+
+.info {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.temp {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #fff;
+}
+
+.city .name {
+  font-weight: 400;
+  color: #fff;
+}
+
+.city .date {
+  color: #fff;
+}
+
+.weather {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weather .icon {
+  color: #fff;
+}
+
+.weather .condition {
+  color: #fff;
+  line-height: 1;
+}

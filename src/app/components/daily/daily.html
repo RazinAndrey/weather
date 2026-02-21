@@ -1,0 +1,23 @@
+@if(daily$ | async; as daily){
+<div class="daily">
+  @for (day of daily; track day.time) {
+  <div class="day">
+    <i class="icon fas" [ngClass]="day.weather_code | weatherIcon"></i>
+
+    <p class="date">{{ day.time | date:'shortDate' }}</p>
+
+    <div class="temp">
+      <div class="temp-item">
+        <p class="temp-item-label">мин</p>
+        <p class="temp-item-value">{{day.temperature_2m_min}}&#176;</p>
+      </div>
+
+      <div class="temp-item">
+        <p class="temp-item-label">макс</p>
+        <p class="temp-item-value">{{day.temperature_2m_max}}&#176;</p>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+}

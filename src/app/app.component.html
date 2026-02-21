@@ -1,0 +1,26 @@
+<div class="weather-app">
+  <div class="main-content">
+    <div class="block-content">
+      @if (weather$ | async; as weather) {
+        <div class="tabs">
+          <button type="button" class="tab" [class.active]="activeTab() === 'daily'" (click)="switchContent('daily')">
+            <i class="fas fa-calendar"></i>
+          </button>
+          <button type="button" class="tab" [class.active]="activeTab() === 'hourly'" (click)="switchContent('hourly')">
+            <i class="fas fa-clock"></i>
+          </button>
+        </div>
+
+        @if (activeTab() === 'daily') {
+          <app-daily />
+        } @else if (activeTab() === 'hourly') {
+          <app-hourly />
+        }
+      }
+    </div>
+
+    <app-info />
+  </div>
+
+  <app-panel />
+</div>

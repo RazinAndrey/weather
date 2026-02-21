@@ -1,0 +1,114 @@
+<form class="form" [formGroup]="form" (ngSubmit)="searchCity()">
+  <input type="text" formControlName="search" class="search" placeholder="Поиск города..." />
+
+  <button type="submit" class="submit">
+    <i class="fas fa-search"></i>
+  </button>
+</form>
+
+<!-- Like Cities -->
+
+@if(weather$ | async; as weather){
+<ul class="cities">
+  @for(city of likeCities; track $index){
+  <li>
+    <button
+      class="city"
+      type="button"
+      [class.active]="city === weather.name"
+      (click)="city === weather.name ? null : selectCity(city)">
+      {{ city }}
+    </button>
+  </li>
+  }
+</ul>
+
+<div class="block-refresh">
+  <button type="button" class="refresh" (click)="refreshCity()"><i class="fas fa-sync-alt"></i></button>
+
+  <div class="line"></div>
+</div>
+}
+
+<!-- Details -->
+
+@if(weather$ | async; as weather){
+<div class="more-info">
+  <h4 class="title">Подробности о погоде</h4>
+  <ul class="details">
+    <li class="detail">
+      <span>Ощущается как </span>
+      <span>{{ weather.current.apparent_temperature }}&#176;</span>
+    </li>
+
+    <li class="detail">
+      <span>Облачно</span>
+      <span>{{ weather.current.cloud_cover }}%</span>
+    </li>
+
+    <li class="detail">
+      <span>Влажность</span>
+      <span>{{ weather.current.relative_humidity_2m }}%</span>
+    </li>
+
+    <li class="detail">
+      <span>Ветер</span>
+      <span>{{ weather.current.wind_speed_10m }} км/ч </span>
+    </li>
+
+    <li class="detail">
+      @if(weather.current.precipitation){
+      <span>Осадки</span>
+      <span>{{ weather.current.precipitation }} мм</span>
+      }@else {
+      <span>Без осадков</span>
+      }
+    </li>
+
+    @if(weather.current.rain){
+    <li class="detail">
+      <span>Дождь</span>
+      <span>{{ weather.current.rain }} мм</span>
+    </li>
+    } @if(weather.current.snowfall){
+    <li class="detail">
+      <span>Снег</span>
+      <span>{{ weather.current.snowfall }} см</span>
+    </li>
+    }
+  </ul>
+  <h4 class="title">Подробности о городе</h4>
+  <ul class="details">
+    <li class="detail">
+      <span>{{ weather.country }}</span>
+    </li>
+
+    <li class="detail">
+      <span>{{ weather.name }}</span>
+    </li>
+
+    @if(weather.population){
+    <li class="detail">
+      <span>{{ weather.population | number:'1.0-0':'ru' }} чел.</span>
+    </li>
+    }
+  </ul>
+</div>
+}@else {
+<div class="more-info">
+  <p class="text">Здесь отобразится детальная информация по выбранному городу.</p>
+</div>
+}
+
+<!-- Состояния -->
+
+@if (error$ | async; as error) {
+<div class="error">
+  {{ error }}
+  <button class="error-btn" (click)="clearError()">✕</button>
+</div>
+} @if (loading$ | async) {
+<div class="loader">
+  <p>Загрузка погоды...</p>
+</div>
+}

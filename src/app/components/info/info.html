@@ -1,0 +1,15 @@
+@if(weather$ | async; as weather){
+<div class="info">
+  <h1 class="temp">{{ weather.current.temperature_2m }}&#176;</h1>
+
+  <div class="city">
+    <h1 class="name">{{ weather.name }}</h1>
+    <p class="date">{{ weather.current.time | date:'dd MMM yyyy, HH:mm'}}</p>
+  </div>
+
+  <div class="weather">
+    <i class="icon fas" [ngClass]="weather.current.weather_code | weatherIcon"></i>
+    <span class="condition">{{ weather.current.weather_code | weatherDescription}}</span>
+  </div>
+</div>
+}

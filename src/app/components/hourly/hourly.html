@@ -1,0 +1,13 @@
+@if(hourly$ | async; as hourly){
+<div class="hourly">
+  @for (day of hourly; track day.time) {
+  <div class="hour">
+    <i class="icon fas" [ngClass]="day.weather_code | weatherIcon"></i>
+
+    <p class="date">{{ day.time | date:'shortTime' }}</p>
+
+    <p class="temp">{{day.temperature_2m}}&#176;</p>
+  </div>
+  }
+</div>
+}

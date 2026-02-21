@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "weather",
+  "version": "0.1.0",
+  "identifier": "com.andrey.weather",
+  "build": {
+    "beforeDevCommand": "npm run start",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist/weather/browser"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Weather",
+        "width": 800,
+        "height": 600,
+        "minWidth": 800,
+        "minHeight": 600,
+        "maxWidth": 800,
+        "maxHeight": 600,
+        "resizable": false,
+        "fullscreen": false,
+        "maximizable": false,
+        "decorations": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+  }
+}
