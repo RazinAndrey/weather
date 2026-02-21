@@ -1,5 +1,36 @@
-# Tauri + Angular
+# 🌤️ Weather App
 
-This template should help get you started developing with Tauri and Angular.
+## 📋 О проекте
 
+Десктопное приложение для просмотра погоды, построенное на стеке: Angular + Tauri
+
+**Angular** — мощный фреймворк для создания пользовательского интерфейса
+
+**Tauri** — инструмент, написанный на Rust для создания десктопных приложений. Аналог Electron, но с ключевыми преимуществами:
+
+📦 Размер приложения в 10-20 раз меньше
+
+⚡ Выше производительность (использует системный браузер/WebView)
+
+### Требования для работы
+
+| Инструмент  | Описание                    | Команда для проверки |
+| ----------- | --------------------------- | -------------------- |
+| **Node.js** | Среда выполнения JavaScript | `node --version`     |
+| **npm**     | Менеджер пакетов Node.js    | `npm --version`      |
+| **Rust**    | Язык программирования       | `rustc --version`    |
+| **Cargo**   | Менеджер пакетов Rust       | `cargo --version`    |
+
+### Запуск приложения в режиме разработки
+
+```bash
 npm run tauri dev
+```
+
+### Сборка под текущую операционную систему
+
+```bash
+npm run tauri build
+```
+
+[![Скачать для Windows](https://img.shields.io/badge/Скачать-Windows-blue?style=for-the-badge&logo=windows)](https://github.com/RazinAndrey/weather/releases/tag/v1.0.0)
